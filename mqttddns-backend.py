@@ -45,8 +45,8 @@ class Consumer():
     self.conn.on_disconnect = self._on_disconnect
     self.content={}
 
-    if self.user is not None:
-       self.conn.username_pw_set(self.icfg['user'], password=self.cfg['pass'])
+    if self.cfg['user'] is not None:
+       self.conn.username_pw_set(self.cfg['user'], password=self.cfg['pass'])
 
     self._connect()
     # subscribe is executed via _on_connect
