@@ -18,7 +18,7 @@ def getenv():
     'mqtt_user': os.environ.get('MQTT_USER', None),
     'mqtt_pass': os.environ.get('MQTT_PASS', None),
     'mqtt_qos':  os.environ.get('MQTT_QOS', int(1)),
-    'mqtt_topics': os.environ.get('MQTT_TOPIC_PREFIX', 'ddns-test/+'),
+    'mqtt_topics': os.environ.get('MQTT_TOPICS', 'ddns-test/+'),
     'hostfile': os.environ.get('HOSTFILE', os.path.join( os.path.dirname(os.path.realpath(__file__)) , 'ddnshosts') )
   }
 
