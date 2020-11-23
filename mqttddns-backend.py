@@ -45,8 +45,8 @@ class Consumer():
     self.conn.on_disconnect = self._on_disconnect
     self.content={}
 
-    if self.cfg['user'] is not None:
-       self.conn.username_pw_set(self.cfg['user'], password=self.cfg['pass'])
+    if self.cfg['mqtt_user'] is not None:
+       self.conn.username_pw_set(self.cfg['mqtt_user'], password=self.cfg['mqtt_pass'])
 
     self._connect()
     # subscribe is executed via _on_connect
@@ -61,7 +61,7 @@ class Consumer():
 
   def _connect(self, depth=0):
     try:
-      self.conn.connect(self.cfg['addr'], port=self.cfg['port'], keepalive=15)
+      self.conn.connect(self.cfg['mqtt_addr'], port=self.cfg['mqtt_port'], keepalive=15)
     except Exception as e:
       msg("Connection failed : %s" % (str(e)))
       depth += 1
@@ -75,7 +75,7 @@ class Consumer():
 
   def _subscribe(self):
     try:
-      self.conn.subscribe(self.cfg['topics'], qos=self.cfg['qos'])
+      self.conn.subscribe(self.cfg['mqtt_topics'], qos=self.cfg['mqtt_qos'])
     except Exception as e:
       msg("Subscription exception : %s" % (str(e)))
       raise e
